@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ResumeModal from "./ResumeModal";
-
+import { api } from "../../axiosConfig";
 const MyApplications = () => {
   const { user } = useContext(Context);
   const [applications, setApplications] = useState([]);
@@ -17,16 +16,16 @@ const MyApplications = () => {
   useEffect(() => {
     try {
       if (user && user.role === "Employer") {
-        axios
-          .get("http://localhost:4000/api/v1/application/employer/getall", {
+        api
+          .get("/api/v1/application/employer/getall", {
             withCredentials: true,
           })
           .then((res) => {
             setApplications(res.data.applications);
           });
       } else {
-        axios
-          .get("http://localhost:4000/api/v1/application/jobseeker/getall", {
+        api
+          .get("/api/v1/application/jobseeker/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -44,8 +43,8 @@ const MyApplications = () => {
 
   const deleteApplication = (id) => {
     try {
-      axios
-        .delete(`http://localhost:4000/api/v1/application/delete/${id}`, {
+      api
+        .delete(`/api/v1/application/delete/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
