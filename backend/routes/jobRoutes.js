@@ -19,3 +19,4 @@ router.delete("/delete/:id", isAuthorized, deleteJob);
 router.get("/:id", isAuthorized, getSingleJob);
 
 export default router;
+
