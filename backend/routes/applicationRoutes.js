@@ -16,3 +16,7 @@ router.delete("/delete/:id", isAuthorized, jobseekerDeleteApplication);
 
 export default router;
 
+
+
+
+
