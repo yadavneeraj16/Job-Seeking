@@ -14,3 +14,4 @@ export const isAuthorized = catchAsyncErrors(async (req, res, next) => {
 
   next();
 });
+
